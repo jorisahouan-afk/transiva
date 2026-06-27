@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Transiva · Expédition vers l'Afrique</title>
+<meta name="description" content="Transiva — Livraison fiable de colis vers plus de 40 pays africains. Demandez votre devis personnalisé.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:       #1A6B3C;
+    --green-mid:   #2E8B57;
+    --green-light: #E8F5EE;
+    --green-border:#B8DCC8;
+    --amber:       #D4760A;
+    --amber-light: #FEF3E2;
+    --amber-border:#F2C97A;
+    --surface:     #FFFFFF;
+    --bg:          #F7F6F2;
+    --border:      #E2DFD8;
+    --text:        #1C1C1A;
+    --muted:       #6B6966;
+    --light:       #A8A5A0;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 62px;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800;
+    color: var(--green); text-decoration: none; letter-spacing: -0.5px;
+  }
+  .logo-mark {
+    width: 30px; height: 30px; background: var(--green);
+    border-radius: 7px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .logo-mark svg { width: 16px; height: 16px; fill: white; }
+  .nav-links { display: flex; gap: 1.75rem; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-btn {
+    background: var(--green); color: white; border: none;
+    padding: 9px 20px; border-radius: 7px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+    cursor: pointer; transition: background .2s; text-decoration: none;
+  }
+  .nav-btn:hover { background: var(--green-mid); }
+  .nav-mobile-btn { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-mobile-btn span { display: block; width: 22px; height: 2px; background: var(--text); margin: 4px 0; border-radius: 2px; transition: all .3s; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 2rem 0;
+    overflow: hidden;
+  }
+  .hero-inner {
+    max-width: 1080px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    background: var(--green-light); color: var(--green);
+    font-size: 11px; font-weight: 500; padding: 5px 14px;
+    border-radius: 100px; border: 1px solid var(--green-border);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem;
+  }
+  .pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--green-mid); flex-shrink: 0; }
+  h1 {
+    font-family: 'Syne', sans-serif; font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800; color: var(--text); line-height: 1.08;
+    letter-spacing: -2px; margin-bottom: 1rem;
+  }
+  h1 em { font-style: normal; color: var(--green); }
+  .hero-desc { color: var(--muted); font-size: 15px; line-height: 1.75; margin-bottom: 2rem; font-weight: 300; }
+  .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .btn-main {
+    background: var(--green); color: white; border: none;
+    padding: 13px 26px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: background .2s; text-decoration: none; display: inline-block;
+  }
+  .btn-main:hover { background: var(--green-mid); }
+  .btn-outline {
+    background: transparent; color: var(--green);
+    border: 1.5px solid var(--green-border);
+    padding: 13px 26px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    cursor: pointer; transition: all .2s; text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { background: var(--green-light); }
+  .hero-stats {
+    display: flex; gap: 2rem; margin-top: 2.5rem;
+    padding-top: 2rem; border-top: 1px solid var(--border);
+  }
+  .s-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--green); }
+  .s-lbl { font-size: 12px; color: var(--light); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+
+  /* Process card */
+  .process-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.5rem;
+  }
+  .process-title {
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.25rem;
+  }
+  .step-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; }
+  .step-row:not(:last-child) { border-bottom: 1px dashed var(--border); }
+  .step-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 500; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-num.done    { background: var(--green-light); color: var(--green); }
+  .step-num.current { background: var(--amber-light);  color: var(--amber); }
+  .step-num.next    { background: #F0EEE8; color: var(--light); }
+  .step-text { font-size: 13px; color: var(--text); font-weight: 500; line-height: 1.4; }
+  .step-sub  { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 300; }
+  .step-badge {
+    display: inline-block; font-size: 10px; font-weight: 500;
+    padding: 3px 10px; border-radius: 100px; margin-top: 5px;
+  }
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-amber { background: var(--amber-light);  color: var(--amber); }
+
+  /* ── DESTINATIONS STRIP ── */
+  .destinations {
+    background: var(--green); padding: 16px 2rem;
+    overflow: hidden; white-space: nowrap;
+  }
+  .dest-track {
+    display: inline-flex; gap: 2.5rem;
+    animation: scroll-dest 30s linear infinite;
+  }
+  .dest-track:hover { animation-play-state: paused; }
+  @keyframes scroll-dest {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .dest-item { font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 400; }
+  .dest-item::before { content: '·'; margin-right: .75rem; opacity: .5; }
+
+  /* ── DEVIS SECTION ── */
+  .section { padding: 72px 2rem; }
+  .section-inner { max-width: 860px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;
+    color: var(--green); background: var(--green-light);
+    padding: 5px 14px; border-radius: 100px; display: inline-block;
+    margin-bottom: 1rem; border: 1px solid var(--green-border);
+  }
+  h2 { font-family: 'Syne', sans-serif; font-size: clamp(26px, 4vw, 34px); font-weight: 800; letter-spacing: -1.5px; color: var(--text); margin-bottom: .4rem; }
+  .section-desc { color: var(--muted); font-size: 15px; margin-bottom: 2.5rem; font-weight: 300; }
+
+  .info-banner {
+    background: var(--amber-light); border: 1px solid var(--amber-border);
+    border-radius: 10px; padding: 1rem 1.25rem;
+    display: flex; align-items: flex-start; gap: 10px; margin-bottom: 2rem;
+  }
+  .info-banner svg { width: 18px; height: 18px; fill: var(--amber); flex-shrink: 0; margin-top: 1px; }
+  .info-banner p { font-size: 13px; color: var(--amber); line-height: 1.6; }
+  .info-banner strong { font-weight: 500; }
+
+  .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+  .fsection-title {
+    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600;
+    color: var(--muted); text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 1.25rem; padding-bottom: .75rem; border-bottom: 1px solid var(--border);
+  }
+  .form-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1rem; }
+  .form-row.three { grid-template-columns: repeat(3, 1fr); }
+  .form-row.single { grid-template-columns: 1fr; }
+  .fg { display: flex; flex-direction: column; gap: 5px; }
+  .fg label { font-size: 12px; font-weight: 500; color: var(--text); }
+  .fg input, .fg select, .fg textarea {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 10px 13px; font-size: 14px;
+    font-family: 'DM Sans', sans-serif; color: var(--text);
+    background: var(--surface); outline: none; transition: border-color .2s; width: 100%;
+  }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--green); }
+  .fg textarea { min-height: 80px; resize: vertical; }
+  .fg .hint { font-size: 11px; color: var(--light); margin-top: 3px; }
+  .spacer { height: 1.5rem; }
+
+  .service-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+  .svc { border: 1.5px solid var(--border); border-radius: 10px; padding: 1rem; cursor: pointer; transition: all .2s; }
+  .svc:hover { border-color: var(--green); background: var(--green-light); }
+  .svc.sel   { border-color: var(--green); background: var(--green-light); }
+  .svc-name  { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+  .svc-time  { font-size: 11px; color: var(--muted); }
+  .svc-note  { font-size: 11px; color: var(--green); margin-top: 5px; font-weight: 500; }
+
+  .form-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1.25rem; border-top: 1px solid var(--border); margin-top: .5rem;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .notice { font-size: 12px; color: var(--light); max-width: 280px; line-height: 1.5; }
+  .btn-submit {
+    background: var(--green); color: white; border: none;
+    padding: 13px 30px; border-radius: 9px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+    cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background .2s;
+  }
+  .btn-submit:hover { background: var(--green-mid); }
+  .btn-submit svg { width: 15px; height: 15px; fill: white; }
+
+  /* ── FEATURES ── */
+  .feats { background: var(--green-light); border-top: 1px solid var(--green-border); padding: 72px 2rem; }
+  .feats-inner { max-width: 1080px; margin: 0 auto; }
+  .feats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
+  .feat { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .feat-icon { width: 36px; height: 36px; background: var(--green-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: .875rem; }
+  .feat-icon svg { width: 18px; height: 18px; fill: var(--green); }
+  .feat-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .feat-desc { font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+
+  /* ── COUNTRIES ── */
+  .countries-section { padding: 72px 2rem; background: var(--surface); border-top: 1px solid var(--border); }
+  .countries-inner { max-width: 1080px; margin: 0 auto; }
+  .regions-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 2rem; }
+  .region-card { }
+  .region-name { font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: .5px; margin-bottom: .75rem; }
+  .country-list { display: flex; flex-direction: column; gap: 4px; }
+  .country-item { font-size: 13px; color: var(--muted); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 2.5rem 2rem 1.5rem; }
+  .footer-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
+  .footer-brand { max-width: 260px; }
+  .footer-brand .logo { margin-bottom: .75rem; }
+  .footer-brand p { font-size: 13px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+  .footer-links h4 { font-size: 12px; font-weight: 500; color: var(--text); text-transform: uppercase; letter-spacing: .5px; margin-bottom: .875rem; }
+  .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .footer-links ul li a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color .2s; }
+  .footer-links ul li a:hover { color: var(--green); }
+  .footer-contact p { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+  .footer-contact a { color: var(--green); text-decoration: none; }
+  .footer-bottom { max-width: 1080px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; }
+  .footer-bottom p { font-size: 12px; color: var(--light); }
+
+  /* ── MODAL CONFIRMATION ── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.35); z-index: 200;
+    align-items: center; justify-content: center; padding: 1rem;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-card {
+    background: var(--surface); border-radius: 16px;
+    padding: 2.5rem; text-align: center; max-width: 420px; width: 100%;
+    border: 1px solid var(--border);
+  }
+  .modal-icon {
+    width: 56px; height: 56px; background: var(--green-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+  }
+  .modal-icon svg { width: 28px; height: 28px; fill: var(--green); }
+  .modal-card h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: .5rem; }
+  .modal-card p { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 1.25rem; }
+  .ref-box {
+    background: var(--green-light); border: 1px solid var(--green-border);
+    border-radius: 9px; padding: 10px 20px;
+    font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: var(--green);
+    display: inline-block; margin-bottom: 1.25rem;
+  }
+  .btn-close {
+    background: var(--green); color: white; border: none;
+    padding: 11px 26px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer;
+  }
+  .btn-close:hover { background: var(--green-mid); }
+
+  /* ── RESPONSIVE ── */
+  
+.whatsapp-float{
+position:fixed;
+width:60px;
+height:60px;
+bottom:25px;
+right:25px;
+background:#25D366;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:30px;
+z-index:9999;
+box-shadow:0 4px 15px rgba(0,0,0,.25);
+transition:.3s;
+}
+.whatsapp-float:hover{transform:scale(1.1);}
+
+@media (max-width: 768px) {
+    .nav-links, .nav-btn { display: none; }
+    .nav-mobile-btn { display: block; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { padding: 40px 1.25rem 0; }
+    .hero-stats { gap: 1.25rem; }
+    .process-card { display: none; }
+    .form-row, .form-row.three { grid-template-columns: 1fr; }
+    .service-cards { grid-template-columns: 1fr; }
+    .feats-grid { grid-template-columns: repeat(2, 1fr); }
+    .regions-grid { grid-template-columns: repeat(2, 1fr); }
+    .form-footer { flex-direction: column; align-items: stretch; }
+    .btn-submit { justify-content: center; }
+    .section { padding: 48px 1.25rem; }
+    .feats { padding: 48px 1.25rem; }
+    .countries-section { padding: 48px 1.25rem; }
+    .footer-inner { flex-direction: column; gap: 2rem; }
+  }
+</style>
+<meta name="google-site-verification" content="R4ZaPiVzrcWi1f3-7umVTeXXOpPowUOGVLgKHaib8_c" />
+<meta name="google-site-verification" content="HFqv6Hu2N3g2pxYfjB5saYVrijTiO5xymBJmmVfwcoM" />
+</head>
+<body>
+
+<!-- ── NAVIGATION ── -->
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-1.5 1.5l1.96 2.5H17V9.5h1.5zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+    </div>
+    Transiva
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#destinations">Destinations</a>
+    <a href="#devis">Tarifs &amp; Devis</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#devis" class="nav-btn">Demander un devis</a>
+  <button class="nav-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="pill">Expédition vers l'Afrique</div>
+      <h1>Livraison fiable <em>partout en Afrique</em></h1>
+      <p class="hero-desc">Transiva connecte la France avec plus de 40 pays africains. Obtenez un devis personnalisé en quelques minutes et confiez-nous vos envois en toute sérénité.</p>
+      <div class="hero-actions">
+        <a href="#devis" class="btn-main">Demander un devis</a>
+        <a href="#destinations" class="btn-outline">Voir les destinations</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="s-num">40+</div><div class="s-lbl">Pays africains</div></div>
+        <div><div class="s-num">72h</div><div class="s-lbl">Réponse devis</div></div>
+        <div><div class="s-num">98%</div><div class="s-lbl">Satisfaction</div></div>
+      </div>
+    </div>
+    <div class="process-card">
+      <div class="process-title">Comment ça fonctionne</div>
+      <div class="step-row">
+        <div class="step-num done">1</div>
+        <div>
+          <div class="step-text">Remplissez la demande de devis</div>
+          <div class="step-sub">Décrivez votre colis et sa destination</div>
+          <span class="step-badge badge-green">Disponible en ligne</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num current">2</div>
+        <div>
+          <div class="step-text">Recevez votre devis sous 72h</div>
+          <div class="step-sub">Notre équipe vous contacte par email</div>
+          <span class="step-badge badge-amber">Réponse de notre équipe</span>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num next">3</div>
+        <div>
+          <div class="step-text">Validez et lancez l'expédition</div>
+          <div class="step-sub">Acceptez le devis et planifiez la collecte</div>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num next">4</div>
+        <div>
+          <div class="step-text">Suivi en temps réel</div>
+          <div class="step-sub">Suivez votre colis jusqu'à la livraison</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DESTINATIONS BANNER ── -->
+<div class="destinations">
+  <div class="dest-track" id="destTrack">
+    <span class="dest-item">Sénégal</span>
+    <span class="dest-item">Côte d'Ivoire</span>
+    <span class="dest-item">Cameroun</span>
+    <span class="dest-item">Mali</span>
+    <span class="dest-item">Guinée</span>
+    <span class="dest-item">Nigeria</span>
+    <span class="dest-item">Ghana</span>
+    <span class="dest-item">Bénin</span>
+    <span class="dest-item">Togo</span>
+    <span class="dest-item">Burkina Faso</span>
+    <span class="dest-item">Congo-Brazzaville</span>
+    <span class="dest-item">RD Congo</span>
+    <span class="dest-item">Gabon</span>
+    <span class="dest-item">Kenya</span>
+    <span class="dest-item">Éthiopie</span>
+    <span class="dest-item">Tanzanie</span>
+    <span class="dest-item">Madagascar</span>
+    <span class="dest-item">Maroc</span>
+    <span class="dest-item">Algérie</span>
+    <span class="dest-item">Tunisie</span>
+    <span class="dest-item">Sénégal</span>
+    <span class="dest-item">Côte d'Ivoire</span>
+    <span class="dest-item">Cameroun</span>
+    <span class="dest-item">Mali</span>
+    <span class="dest-item">Guinée</span>
+    <span class="dest-item">Nigeria</span>
+    <span class="dest-item">Ghana</span>
+    <span class="dest-item">Bénin</span>
+    <span class="dest-item">Togo</span>
+    <span class="dest-item">Burkina Faso</span>
+    <span class="dest-item">Congo-Brazzaville</span>
+    <span class="dest-item">RD Congo</span>
+    <span class="dest-item">Gabon</span>
+    <span class="dest-item">Kenya</span>
+    <span class="dest-item">Éthiopie</span>
+    <span class="dest-item">Tanzanie</span>
+    <span class="dest-item">Madagascar</span>
+    <span class="dest-item">Maroc</span>
+    <span class="dest-item">Algérie</span>
+    <span class="dest-item">Tunisie</span>
+  </div>
+</div>
+
+<!-- ── FORMULAIRE DE DEVIS ── -->
+<section class="section" id="devis">
+  <div class="section-inner">
+    <div class="section-label">Demande de devis</div>
+    <h2>Obtenez votre tarif</h2>
+    <p class="section-desc">Remplissez ce formulaire et notre équipe vous envoie un devis personnalisé sous 72 heures ouvrées.</p>
+
+    <div class="info-banner">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      <p><strong>Pas d'engagement immédiat.</strong> Cette demande ne déclenche pas encore l'expédition. Vous recevrez d'abord un devis détaillé par email, puis vous déciderez librement de procéder ou non.</p>
+    </div>
+
+    <div class="form-card">
+      <!-- ⚠️ ACTION À MODIFIER : remplacez "VOTRE_ID_FORMSPREE" par votre identifiant Formspree -->
+      <!-- Créez un compte gratuit sur https://formspree.io et copiez votre form ID ici -->
+      <form id="devisForm" action="https://formspree.io/f/mqevzoqd" method="POST" onsubmit="submitDevis(event)">
+        <input type="hidden" name="_subject" value="Nouvelle demande de devis — Transiva">
+        <input type="hidden" name="_language" value="fr">
+
+        <div class="fsection-title">Vos coordonnées</div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="nom">Prénom et nom *</label>
+            <input type="text" id="nom" name="nom" placeholder="Marie Dupont" required>
+          </div>
+          <div class="fg">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="marie@example.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="tel">Téléphone</label>
+            <input type="tel" id="tel" name="telephone" placeholder="+33 7 49 91 30 61">
+            <span class="hint">Pour être rappelé si besoin</span>
+          </div>
+          <div class="fg">
+            <label for="ville-exp">Ville d'expédition *</label>
+            <input type="text" id="ville-exp" name="ville_expedition" placeholder="Paris, Lyon, Marseille…" required>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="fsection-title">Destination</div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="pays">Pays de destination *</label>
+            <select id="pays" name="pays_destination" required>
+              <option value="">Sélectionner un pays africain…</option>
+              <optgroup label="Afrique de l'Ouest">
+                <option>Sénégal</option>
+                <option>Côte d'Ivoire</option>
+                <option>Mali</option>
+                <option>Guinée</option>
+                <option>Bénin</option>
+                <option>Togo</option>
+                <option>Burkina Faso</option>
+                <option>Niger</option>
+                <option>Nigeria</option>
+                <option>Ghana</option>
+                <option>Gambie</option>
+                <option>Sierra Leone</option>
+                <option>Guinée-Bissau</option>
+                <option>Liberia</option>
+                <option>Mauritanie</option>
+              </optgroup>
+              <optgroup label="Afrique Centrale">
+                <option>Cameroun</option>
+                <option>Gabon</option>
+                <option>Congo-Brazzaville</option>
+                <option>RD Congo</option>
+                <option>Tchad</option>
+                <option>Centrafrique</option>
+                <option>Guinée Équatoriale</option>
+                <option>São Tomé-et-Príncipe</option>
+              </optgroup>
+              <optgroup label="Afrique de l'Est">
+                <option>Kenya</option>
+                <option>Éthiopie</option>
+                <option>Tanzanie</option>
+                <option>Ouganda</option>
+                <option>Rwanda</option>
+                <option>Madagascar</option>
+                <option>Burundi</option>
+                <option>Djibouti</option>
+                <option>Comores</option>
+              </optgroup>
+              <optgroup label="Afrique du Nord">
+                <option>Maroc</option>
+                <option>Algérie</option>
+                <option>Tunisie</option>
+                <option>Égypte</option>
+                <option>Libye</option>
+              </optgroup>
+              <optgroup label="Afrique Australe">
+                <option>Afrique du Sud</option>
+                <option>Mozambique</option>
+                <option>Zimbabwe</option>
+                <option>Zambie</option>
+                <option>Angola</option>
+                <option>Namibie</option>
+                <option>Botswana</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="ville-dest">Ville de livraison *</label>
+            <input type="text" id="ville-dest" name="ville_destination" placeholder="Ex : Dakar, Abidjan, Douala…" required>
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="fg">
+            <label for="adresse-dest">Adresse du destinataire</label>
+            <input type="text" id="adresse-dest" name="adresse_destinataire" placeholder="Rue, quartier, code postal si disponible">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="fg">
+            <label for="nom-dest">Nom du destinataire *</label>
+            <input type="text" id="nom-dest" name="nom_destinataire" placeholder="Jean Diallo" required>
+          </div>
+          <div class="fg">
+            <label for="tel-dest">Téléphone du destinataire</label>
+            <input type="tel" id="tel-dest" name="telephone_destinataire" placeholder="+221 77 000 00 00">
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="fsection-title">Description du colis</div>
+        <div class="form-row three">
+          <div class="fg">
+            <label for="poids">Poids estimé (kg) *</label>
+            <input type="number" id="poids" name="poids_kg" placeholder="Ex : 5" min="0.1" step="0.1" required>
+          </div>
+          <div class="fg">
+            <label for="dimensions">Dimensions approx. (cm)</label>
+            <input type="text" id="dimensions" name="dimensions_cm" placeholder="L × l × H">
+          </div>
+          <div class="fg">
+            <label for="valeur">Valeur déclarée (€)</label>
+            <input type="number" id="valeur" name="valeur_declaree_euros" placeholder="Ex : 200" min="0">
+            <span class="hint">Pour l'assurance</span>
+          </div>
+        </div>
+        <div class="form-row single">
+          <div class="fg">
+            <label for="contenu">Contenu du colis *</label>
+            <textarea id="contenu" name="contenu_colis" placeholder="Décrivez le contenu : vêtements, matériel informatique, médicaments, documents, cadeaux…" required></textarea>
+            <span class="hint">Soyez précis pour faciliter les formalités douanières</span>
+          </div>
+        </div>
+
+        <div class="spacer"></div>
+        <div class="fsection-title">Mode de livraison souhaité</div>
+        <div class="service-cards">
+          <div class="svc sel" onclick="selSvc(this, 'Économique — 15 à 25 jours')">
+            <div class="svc-name">Économique</div>
+            <div class="svc-time">15–25 jours ouvrés</div>
+            <div class="svc-note">Tarif le plus avantageux</div>
+          </div>
+          <div class="svc" onclick="selSvc(this, 'Standard — 7 à 14 jours')">
+            <div class="svc-name">Standard</div>
+            <div class="svc-time">7–14 jours ouvrés</div>
+            <div class="svc-note">Bon rapport qualité/délai</div>
+          </div>
+          <div class="svc" onclick="selSvc(this, 'Express — 3 à 6 jours')">
+            <div class="svc-name">Express</div>
+            <div class="svc-time">3–6 jours ouvrés</div>
+            <div class="svc-note">Livraison prioritaire</div>
+          </div>
+        </div>
+        <input type="hidden" name="mode_livraison" id="modeLivraison" value="Économique — 15 à 25 jours">
+
+        <div class="form-row single">
+          <div class="fg">
+            <label for="infos">Informations complémentaires</label>
+            <textarea id="infos" name="informations_complementaires" placeholder="Instructions spéciales, contraintes de livraison, questions particulières…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <p class="notice">En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe. Aucun paiement requis à ce stade.</p>
+          <button type="submit" class="btn-submit">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            Envoyer ma demande
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── POURQUOI NOUS ── -->
+<section class="feats" id="services">
+  <div class="feats-inner">
+    <div class="section-label">Nos engagements</div>
+    <h2>Pourquoi choisir Transiva ?</h2>
+    <div class="feats-grid">
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div class="feat-title">Suivi en temps réel</div>
+        <div class="feat-desc">Suivez votre colis à chaque étape, du dépôt jusqu'à la livraison finale en Afrique.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        </div>
+        <div class="feat-title">Envois assurés</div>
+        <div class="feat-desc">Tous vos colis sont couverts contre la perte et les dommages pendant le transport.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm-1-7l7-7-1.41-1.41L11 12.17l-2.59-2.58L7 11l4 4z"/></svg>
+        </div>
+        <div class="feat-title">Gestion douanière</div>
+        <div class="feat-desc">Notre équipe vous accompagne pour toutes les formalités d'import et d'export.</div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+        </div>
+        <div class="feat-title">Support dédié</div>
+        <div class="feat-desc">Un conseiller vous répond par téléphone, email ou WhatsApp tout au long du processus.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DESTINATIONS ── -->
+<section class="countries-section" id="destinations">
+  <div class="countries-inner">
+    <div class="section-label">Nos destinations</div>
+    <h2>Afrique • Europe • Départements d'Outre-mer</h2>
+    <p class="section-desc">
+      Transiva organise vos expéditions vers les principales destinations internationales.
+    </p>
+
+    <div class="regions-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="region-card">
+        <div class="region-name">🌍 Afrique</div>
+        <div class="country-list">
+          <span class="country-item">Tous les pays desservis selon votre demande.</span>
+        </div>
+      </div>
+
+      <div class="region-card">
+        <div class="region-name">🇪🇺 Europe</div>
+        <div class="country-list">
+          <span class="country-item">Expéditions vers les principaux pays européens.</span>
+        </div>
+      </div>
+
+      <div class="region-card">
+        <div class="region-name">🏝️ Départements d'Outre-mer</div>
+        <div class="country-list">
+          <span class="country-item">Martinique</span>
+          <span class="country-item">Guadeloupe</span>
+          <span class="country-item">Guyane</span>
+          <span class="country-item">La Réunion</span>
+          <span class="country-item">Mayotte</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo" style="margin-bottom:.75rem;display:inline-flex;">
+        <div class="logo-mark">
+          <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zm-1.5 1.5l1.96 2.5H17V9.5h1.5zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm12 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        </div>
+        Transiva
+      </a>
+      <p>Spécialiste de l'expédition de colis depuis la France vers toute l'Afrique. Service personnalisé, fiable et transparent.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#services">Nos services</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#devis">Demander un devis</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Envoi économique</a></li>
+        <li><a href="#">Envoi standard</a></li>
+        <li><a href="#">Envoi express</a></li>
+        <li><a href="#">Suivi de colis</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h4 style="font-size:12px;font-weight:500;color:var(--text);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.875rem;">Contact</h4>
+      <!-- ⚠️ MODIFIEZ ces informations avec les vôtres -->
+      <p>📧 <a href="mailto:jorisahouan@gmail.com">jorisahouan@gmail.com</a></p>
+      <p style="margin-top:4px;">📱 <a href="tel:+33600000000">+33 7 49 91 30 61</a></p>
+      <p style="margin-top:4px;font-size:12px;color:var(--light);">Lun–Ven · 9h–18h</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2024 Transiva · Tous droits réservés</p>
+    <p>Spécialiste expédition vers l'Afrique depuis la France</p>
+  </div>
+</footer>
+
+<!-- ── MODAL CONFIRMATION ── -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <div class="modal-icon">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+    </div>
+    <h3>Demande envoyée !</h3>
+    <p>Votre demande de devis a bien été transmise. Notre équipe vous contactera sous <strong>72 heures ouvrées</strong> à l'adresse email fournie.</p>
+    <div class="ref-box" id="refNum">GT-DEV-XXXX</div>
+    <br>
+    <p style="font-size:12px;color:var(--light);margin-bottom:1.25rem;">Conservez ce numéro de référence pour vos échanges avec notre équipe.</p>
+    <button class="btn-close" onclick="closeModal()">Fermer</button>
+  </div>
+</div>
+
+<script>
+  /* ── Service selection ── */
+  function selSvc(el, label) {
+    document.querySelectorAll('.svc').forEach(s => s.classList.remove('sel'));
+    el.classList.add('sel');
+    document.getElementById('modeLivraison').value = label;
+  }
+
+  /* ── Form submit ── */
+  function submitDevis(e) {
+    e.preventDefault();
+    const form = document.getElementById('devisForm');
+    const action = form.action;
+
+    /* Si Formspree n'est pas encore configuré, on affiche quand même la confirmation */
+    if (action.includes('VOTRE_ID_FORMSPREE')) {
+      showConfirm();
+      return;
+    }
+
+    /* Envoi réel via Formspree */
+    const data = new FormData(form);
+    fetch(action, {
+      method: 'POST',
+      body: data,
+      headers: { 'Accept': 'application/json' }
+    }).then(res => {
+      if (res.ok) { showConfirm(); form.reset(); }
+      else { alert('Une erreur est survenue. Veuillez nous contacter directement par email.'); }
+    }).catch(() => {
+      alert('Impossible d\'envoyer le formulaire. Vérifiez votre connexion.');
+    });
+  }
+
+  function showConfirm() {
+    const ref = 'GT-DEV-' + Math.floor(Math.random() * 9000 + 1000);
+    document.getElementById('refNum').textContent = ref;
+    document.getElementById('modalOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  /* Close modal on overlay click */
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  /* ── Mobile menu ── */
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    const btn   = document.querySelector('.nav-btn');
+    const isOpen = links.style.display === 'flex';
+    links.style.display = isOpen ? '' : 'flex';
+    links.style.flexDirection = 'column';
+    links.style.position = 'absolute';
+    links.style.top = '62px';
+    links.style.left = '0'; links.style.right = '0';
+    links.style.background = 'var(--surface)';
+    links.style.padding = '1rem 2rem';
+    links.style.borderBottom = '1px solid var(--border)';
+    links.style.gap = '1rem';
+    btn.style.display = isOpen ? '' : 'block';
+  }
+
+  /* ── Smooth scroll for anchor links ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+<a href="https://wa.me/33749913061?text=Bonjour%20Global%20Transit,%20je%20souhaite%20obtenir%20un%20devis."
+class="whatsapp-float" target="_blank">💬</a>
+
+</body>
+</html>
