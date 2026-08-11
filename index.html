@@ -113,23 +113,25 @@
     </section>
     <section class="section quote" id="devis">
       <div class="container quote-grid">
-        <div class="quote-copy"><p class="eyebrow">Devis personnalisé</p><h2>Parlons de votre expédition</h2><p class="lead">Donnez-nous les informations essentielles. Nous reviendrons vers vous pour compléter le dossier si nécessaire.</p><ul class="quote-list"><li><b>✓</b> Demande gratuite et sans engagement</li><li><b>✓</b> Réponse personnalisée</li><li><b>✓</b> Aucun paiement à cette étape</li></ul><div class="contact-box">Une question avant de commencer ?<br><a href="https://wa.me/33749913061" target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a></div></div>
-        <div class="form-card"><h3 class="form-title">Votre demande de devis</h3><p class="form-subtitle">Les champs marqués d’un * sont obligatoires.</p>
+        <div class="quote-copy"><p class="eyebrow">Estimation gratuite</p><h2>Vous êtes à La Réunion&nbsp;?</h2><p class="lead">Vous souhaitez commander auprès d’un vendeur en métropole qui ne livre pas à La Réunion, ou regrouper plusieurs achats&nbsp;? Présentez-nous votre besoin.</p><ul class="quote-list"><li><b>✓</b> Particuliers et professionnels</li><li><b>✓</b> Étude maritime ou aérienne</li><li><b>✓</b> Demande gratuite et sans engagement</li></ul><div class="contact-box">Une question avant de commencer ?<br><a href="https://wa.me/33749913061" target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a></div></div>
+        <div class="form-card"><h3 class="form-title">Recevoir mon estimation</h3><p class="form-subtitle">Les champs marqués d’un * sont obligatoires.</p>
           <form id="quoteForm" action="https://formspree.io/f/xbdnpqdg" method="post">
             <input type="hidden" name="_subject" value="Nouvelle demande de devis — Transiva">
             <div class="form-grid">
               <div class="field"><label for="name">Prénom et nom *</label><input id="name" name="nom" autocomplete="name" required></div>
               <div class="field"><label for="email">Adresse email *</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-              <div class="field"><label for="phone">Téléphone</label><input id="phone" name="telephone" type="tel" autocomplete="tel" placeholder="+33…"></div>
+              <div class="field"><label for="phone">Téléphone *</label><input id="phone" name="telephone" type="tel" autocomplete="tel" placeholder="+262…" required></div>
+              <div class="field"><label for="profile">Vous êtes *</label><select id="profile" name="profil" required><option value="">Sélectionner</option><option>Un particulier</option><option>Un professionnel</option></select></div>
               <div class="field"><label for="transport">Mode souhaité *</label><select id="transport" name="mode_transport" required><option value="">Sélectionner</option><option>Maritime</option><option>Aérien</option><option>Je souhaite être conseillé</option></select></div>
-              <div class="field"><label for="departure">Départ *</label><input id="departure" name="depart" placeholder="Ville et pays" required></div>
-              <div class="field"><label for="destination">Destination *</label><input id="destination" name="destination" placeholder="Ville et pays" required></div>
+              <div class="field"><label for="departure">Lieu du vendeur *</label><input id="departure" name="depart" placeholder="Ex. Paris, France" required></div>
+              <div class="field"><label for="destination">Votre commune à La Réunion *</label><input id="destination" name="destination" placeholder="Ex. Saint-Denis" required></div>
               <div class="field"><label for="goods">Type d’envoi *</label><select id="goods" name="type_envoi" required><option value="">Sélectionner</option><option>Colis</option><option>Marchandises</option><option>Effets personnels</option><option>Véhicule</option><option>Autre</option></select></div>
               <div class="field"><label for="weight">Poids estimé</label><input id="weight" name="poids" placeholder="Ex. 25 kg"></div>
+              <div class="field full"><label for="productLink">Lien du produit ou du vendeur</label><input id="productLink" name="lien_produit" type="url" inputmode="url" placeholder="https://…"></div>
               <div class="field full"><label for="dimensions">Dimensions ou volume</label><input id="dimensions" name="dimensions" placeholder="Ex. 60 × 40 × 40 cm ou 2 m³"></div>
               <div class="field full"><label for="details">Description de l’envoi *</label><textarea id="details" name="description" placeholder="Contenu, quantité, contraintes ou informations utiles…" required></textarea></div>
             </div>
-            <label class="consent"><input type="checkbox" required><span>J’accepte que Transiva utilise ces informations uniquement pour répondre à ma demande, conformément à la <a href="/politique-confidentialite.html">politique de confidentialité</a>.</span></label>
+            <label class="consent"><input type="checkbox" name="consentement_contact" value="Oui" required><span>J’accepte que Transiva utilise mes informations pour étudier ma demande et me recontacter, conformément à la <a href="/politique-confidentialite.html">politique de confidentialité</a>.</span></label>
             <div class="submit-row"><small>Nous vous contacterons avec les prochaines étapes.</small><button class="btn btn-green" type="submit" id="submitBtn">Envoyer ma demande →</button></div>
             <div class="form-message" id="formMessage" role="status" aria-live="polite"></div>
           </form>
