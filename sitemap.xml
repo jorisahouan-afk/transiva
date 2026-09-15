@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://transiva.fr/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://transiva.fr/envoi-colis-france-benin.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://transiva.fr/fret-maritime-france-benin.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://transiva.fr/transport-maritime.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://transiva.fr/transport-aerien.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://transiva.fr/transport-vehicules.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
